@@ -9,6 +9,7 @@
           <th scope="col">Возраст</th>
           <th scope="col">Телефон</th>
           <th scope="col">Эл.почта</th>
+          <th scope="col">Редактировать</th>
         </tr>
       </thead>
       <tbody>
@@ -19,6 +20,11 @@
           <td>{{ user.age }}</td>
           <td>{{ user.phone }}</td>
           <td>{{ user.email }}</td>
+          <td>
+            <router-link :to="{ name: 'editAccount', params: { accountId: user.id } }"
+              >Редактировать</router-link
+            >
+          </td>
         </tr>
       </tbody>
     </table>

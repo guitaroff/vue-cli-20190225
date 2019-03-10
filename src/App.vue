@@ -18,9 +18,6 @@
           <li class="nav-item active">
             <router-link to="/">Home</router-link>
           </li>
-          <li class="nav-item">
-            <router-link to="/about">About</router-link>
-          </li>
         </ul>
       </div>
     </nav>
