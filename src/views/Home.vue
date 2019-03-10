@@ -25,20 +25,13 @@ export default {
   mounted() {
     this.loadUsers()
   },
-  watch: {
-    users: function() {
-      console.log('Обновился список пользователей.')
-    }
-  },
   methods: {
     loadUsers() {
       axios
         .get('http://localhost:3004/users')
         .then(response => response.data)
         .then(users => {
-          console.log('DATA', users)
           this.users = users
-          console.log('USERS', this.users)
         })
     }
   }

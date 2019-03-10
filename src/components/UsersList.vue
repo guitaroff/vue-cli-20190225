@@ -5,18 +5,20 @@
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Имя</th>
-          <th scope="col">Отчество</th>
           <th scope="col">Фамилия</th>
-          <th scope="col">Фото профиля</th>
+          <th scope="col">Возраст</th>
+          <th scope="col">Телефон</th>
+          <th scope="col">Эл.почта</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="user in users" :key="user.id">
           <td>{{ user.id }}</td>
-          <td>{{ user.firstname }}</td>
-          <td>{{ user.secondname }}</td>
-          <td>{{ user.lastname }}</td>
-          <td>{{ user.avatar }}</td>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.age }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.email }}</td>
         </tr>
       </tbody>
     </table>
