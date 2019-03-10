@@ -14,7 +14,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/editaccount',
+      path: '/accounts/:accountId/edit',
       name: 'editAccount',
       component: EditAccount
     }
