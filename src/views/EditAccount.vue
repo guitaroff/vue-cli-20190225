@@ -2,7 +2,7 @@
   <div>
     <h2>Редактирование профиля</h2>
     {{ account }}
-    <!-- <div v-if="!users.length" class="alert alert-warning">
+    <!-- <div v-if="!account.length" class="alert alert-warning">
       Загрузка...
     </div> -->
     <edit-account v-bind:account="account" v-on:account="updateAccount"></edit-account>
@@ -18,13 +18,14 @@ export default {
   components: {
     'edit-account': AccountData
   },
-  data: function() {
+  data() {
     return {
       account: {}
     }
   },
   mounted() {
     this.loadUser()
+    console.log('account', this.account.id)
   },
   methods: {
     loadUser() {

@@ -1,52 +1,65 @@
 <template>
   <div>
-    <b-form @submit.prevent="updateAccount">
-      <b-form-group id="firstNameInputGroup" label="Имя" label-for="firstName">
-        <b-form-input
-          id="firstName"
+    <form>
+      <div class="form-group">
+        <label for="firstName">Имя</label>
+        <input
           type="text"
           v-model="account.firstName"
-          required
+          class="form-control"
+          id="firstName"
           placeholder="Введите имя"
         />
-      </b-form-group>
+      </div>
 
-      <b-form-group id="lastNameInputGroup" label="Фамилия" label-for="lastName">
-        <b-form-input
-          id="lastName"
+      <div class="form-group">
+        <label for="lastName">Фамилия</label>
+        <input
           type="text"
           v-model="account.lastName"
-          required
+          class="form-control"
+          id="lastName"
           placeholder="Введите фамилию"
         />
-      </b-form-group>
+      </div>
 
-      <b-form-group id="ageInputGroup" label="Возраст" label-for="age">
-        <b-form-input id="age" type="text" v-model="account.age" required placeholder="Возраст" />
-      </b-form-group>
+      <div class="form-group">
+        <label for="age">Возраст</label>
+        <input
+          type="text"
+          v-model="account.age"
+          class="form-control"
+          id="age"
+          placeholder="Возраст"
+        />
+      </div>
 
-      <b-form-group id="phoneInputGroup" label="Телефон" label-for="phone">
-        <b-form-input
-          id="phone"
+      <div class="form-group">
+        <label for="phone">Телефон</label>
+        <input
           type="text"
           v-model="account.phone"
+          class="form-control"
+          id="phone"
           required
           placeholder="Телефон"
         />
-      </b-form-group>
+      </div>
 
-      <b-form-group id="emailInputGroup" label="Эл.почта" label-for="email">
-        <b-form-input
-          id="email"
+      <div class="form-group">
+        <label for="email">Эл.почта</label>
+        <input
           type="text"
           v-model="account.email"
+          class="form-control"
+          id="email"
           required
           placeholder="Эл.почта"
         />
-      </b-form-group>
+      </div>
 
-      <b-button type="submit" variant="primary">Submit</b-button>
-    </b-form>
+      <button type="submit" class="btn btn-primary" @click.prevent="updateAccount">Обновить</button>
+    </form>
   </div>
 </template>
 

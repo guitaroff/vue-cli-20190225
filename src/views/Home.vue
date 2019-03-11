@@ -17,7 +17,7 @@ export default {
   components: {
     'users-list': UsersList
   },
-  data: function() {
+  data() {
     return {
       users: []
     }
