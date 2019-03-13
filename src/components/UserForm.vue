@@ -62,8 +62,11 @@
 <script>
 export default {
   name: 'UserForm',
+  model: {
+    prop: 'user'
+  },
   props: {
-    value: {
+    user: {
       type: Object,
       required: true
     }
@@ -78,7 +81,7 @@ export default {
     }
   },
   mounted() {
-    this.localUser = Object.assign({}, this.value)
+    this.localUser = Object.assign({}, this.user)
   },
   methods: {
     updateUser() {

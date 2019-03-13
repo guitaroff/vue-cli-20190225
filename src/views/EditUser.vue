@@ -27,6 +27,9 @@ export default {
   computed: {
     id() {
       return this.$route.params.id
+    },
+    url() {
+      return 'http://localhost:3004/users/' + this.id
     }
   },
   mounted() {
@@ -35,7 +38,7 @@ export default {
   methods: {
     loadUser() {
       axios
-        .get('http://localhost:3004/users/' + this.id)
+        .get(this.url)
         .then(response => response.data)
         .then(user => {
           this.user = user
@@ -51,7 +54,7 @@ export default {
         })
     },
     saveUser() {
-      axios.patch('http://localhost:3004/users/' + this.id, this.user).then(() => {
+      axios.patch(this.url, this.user).then(() => {
         this.$router.push('/users')
       })
     }
