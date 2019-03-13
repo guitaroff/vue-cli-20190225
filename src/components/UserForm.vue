@@ -63,7 +63,7 @@
 export default {
   name: 'UserForm',
   props: {
-    user: {
+    value: {
       type: Object,
       required: true
     }
@@ -78,11 +78,11 @@ export default {
     }
   },
   mounted() {
-    this.localUser = Object.assign({}, this.user)
+    this.localUser = Object.assign({}, this.value)
   },
   methods: {
     updateUser() {
-      this.$emit('update-user', Object.assign({}, this.localUser))
+      this.$emit('input', Object.assign({}, this.localUser))
     }
   }
 }

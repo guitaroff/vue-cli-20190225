@@ -1,6 +1,9 @@
 <template>
   <div>
-    <user-form v-if="user" :user="user" @update-user="updateUser"></user-form>
+    <div v-if="!user" class="alert alert-warning">
+      Загрузка...
+    </div>
+    <user-form v-else v-model="user"></user-form>
     <button type="button" class="btn btn-primary" @click="saveUser">
       Сохранить
     </button>
@@ -51,9 +54,6 @@ export default {
       axios.patch('http://localhost:3004/users/' + this.id, this.user).then(() => {
         this.$router.push('/users')
       })
-    },
-    updateUser(user) {
-      console.log('UPDATE USER', user)
     }
   }
 }
