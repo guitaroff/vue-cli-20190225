@@ -5,7 +5,7 @@
     <!-- <div v-if="!account.length" class="alert alert-warning">
       Загрузка...
     </div> -->
-    <edit-account v-bind:account="account" v-on:account="updateAccount"></edit-account>
+    <edit-account :account="account" @account="updateAccount"></edit-account>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ import AccountData from '@/components/AccountData.vue'
 import axios from 'axios'
 
 export default {
-  name: 'editAccount',
+  name: 'EditAccount',
   components: {
     'edit-account': AccountData
   },

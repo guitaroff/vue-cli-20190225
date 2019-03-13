@@ -4,7 +4,7 @@
     <div v-if="!users.length" class="alert alert-warning">
       Загрузка...
     </div>
-    <users-list v-else v-bind:users="users"></users-list>
+    <users-list v-else :users="users"></users-list>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ import UsersList from '@/components/UsersList.vue'
 import axios from 'axios'
 
 export default {
-  name: 'users',
+  name: 'Users',
   components: {
     'users-list': UsersList
   },
