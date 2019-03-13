@@ -23,9 +23,7 @@
           <td>{{ user.phone }}</td>
           <td>{{ user.email }}</td>
           <td>
-            <router-link :to="{ name: 'editAccount', params: { accountId: user.id } }"
-              >Редактировать</router-link
-            >
+            <router-link :to="'/edit/' + user.id">Редактировать</router-link>
           </td>
         </tr>
       </tbody>

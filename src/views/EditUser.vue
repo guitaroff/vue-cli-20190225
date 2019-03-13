@@ -1,7 +1,10 @@
 <template>
   <div>
-    <user-form :user="user"></user-form>
-    <pre>{{ user }}</pre>
+    <user-form v-if="user" :user="user" @update-user="updateUser"></user-form>
+    <button type="button" class="btn btn-primary" @click="saveUser">
+      Сохранить
+    </button>
+    <pre>USER НАВЕРХУ{{ user }}</pre>
   </div>
 </template>
 
@@ -44,6 +47,14 @@ export default {
             console.log('Error message', error.message)
           }
         })
+    },
+    saveUser() {
+      axios.patch('http://localhost:3004/users/' + this.id, this.user).then(() => {
+        this.$router.push('/users')
+      })
+    },
+    updateUser(user) {
+      console.log('UPDATE USER', user)
     }
   }
 }
