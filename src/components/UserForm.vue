@@ -1,7 +1,6 @@
 <template>
   <div>
-    <pre>ЮЗЕР ВНИЗУ: {{ user.id }}</pre>
-    <!-- <div class="form-group">
+    <div class="form-group">
       <label for="firstName">Имя</label>
       <input
         id="firstName"
@@ -56,7 +55,7 @@
         required
         placeholder="Эл.почта"
       />
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -79,7 +78,6 @@ export default {
     }
   },
   mounted() {
-    console.log('USER ВНИЗУ 2:', this.user.id)
     this.localUser = Object.assign({}, this.user)
   },
   methods: {

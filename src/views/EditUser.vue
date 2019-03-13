@@ -4,7 +4,6 @@
     <button type="button" class="btn btn-primary" @click="saveUser">
       Сохранить
     </button>
-    <pre>USER НАВЕРХУ{{ user }}</pre>
   </div>
 </template>
 
@@ -19,7 +18,7 @@ export default {
   },
   data() {
     return {
-      user: {}
+      user: null
     }
   },
   computed: {
