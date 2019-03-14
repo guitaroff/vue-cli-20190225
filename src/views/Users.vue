@@ -4,7 +4,7 @@
     <div v-if="!users.length" class="alert alert-warning">
       Загрузка...
     </div>
-    <users-list v-else :users="users"></users-list>
+    <users-list v-else :users="users" @delete-user="deleteUser"></users-list>
   </div>
 </template>
 
@@ -22,6 +22,12 @@ export default {
       users: []
     }
   },
+  watch: {
+    users: {
+      deep: true,
+      handler: 'loadUsers'
+    }
+  },
   mounted() {
     this.loadUsers()
   },
@@ -32,6 +38,22 @@ export default {
         .then(response => response.data)
         .then(users => {
           this.users = users
+        })
+    },
+    deleteUser(user) {
+      axios
+        .delete('http://localhost:3004/users/' + user.id)
+        .then(() => {
+          this.$router.push('/users')
+        })
+        .catch(error => {
+          if (error.response) {
+            console.log('error response', error.response)
+          } else if (error.request) {
+            console.log('error request', error.request)
+          } else {
+            console.log('Error message', error.message)
+          }
         })
     }
   }

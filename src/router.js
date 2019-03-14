@@ -5,6 +5,7 @@ import Home from '@/views/Home.vue'
 import Users from '@/views/Users.vue'
 import EditUser from '@/views/EditUser.vue'
 import CreateUser from '@/views/CreateUser.vue'
+
 Vue.use(Router)
 
 export default new Router({

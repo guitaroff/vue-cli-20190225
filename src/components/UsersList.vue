@@ -10,13 +10,12 @@
           <th scope="col">Телефон</th>
           <th scope="col">Эл.почта</th>
           <th scope="col">Редактировать</th>
+          <th scope="col">Удалить</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="user in users" :key="user.id">
-          <td>
-            <router-link :to="'/edit/' + user.id">{{ user.id }}</router-link>
-          </td>
+          <td>{{ user.id }}</td>
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
           <td>{{ user.age }}</td>
@@ -25,6 +24,7 @@
           <td>
             <router-link :to="'/edit/' + user.id">Редактировать</router-link>
           </td>
+          <td><button class="btn btn-danger" @click="deleteUser(user)">Удалить</button></td>
         </tr>
       </tbody>
     </table>
@@ -38,6 +38,11 @@ export default {
     users: {
       type: Array,
       required: true
+    }
+  },
+  methods: {
+    deleteUser(user) {
+      this.$emit('delete-user', Object.assign({}, user))
     }
   }
 }
