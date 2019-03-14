@@ -40,7 +40,6 @@
         v-model="localUser.phone"
         type="text"
         class="form-control"
-        required
         placeholder="Телефон"
       />
     </div>
@@ -52,7 +51,6 @@
         v-model="localUser.email"
         type="text"
         class="form-control"
-        required
         placeholder="Эл.почта"
       />
     </div>
