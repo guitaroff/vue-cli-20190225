@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      user: { id: 2005 }
+      user: {}
     }
   },
   computed: {
@@ -28,9 +28,8 @@ export default {
   },
   methods: {
     saveUser() {
-      console.log('saveUser')
       axios
-        .post(this.url, { id: 25535, firstName: 'Fred', lastName: 'Flintstone' })
+        .post(this.url, this.user)
         .then(() => {
           this.$router.push('/users')
         })
