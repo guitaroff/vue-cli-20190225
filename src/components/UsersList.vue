@@ -10,6 +10,7 @@
           <th scope="col">Телефон</th>
           <th scope="col">Эл.почта</th>
           <th scope="col">Редактировать</th>
+          <th scope="col">Удалить</th>
         </tr>
       </thead>
       <tbody>
@@ -21,10 +22,9 @@
           <td>{{ user.phone }}</td>
           <td>{{ user.email }}</td>
           <td>
-            <router-link :to="{ name: 'editAccount', params: { accountId: user.id } }"
-              >Редактировать</router-link
-            >
+            <router-link :to="'/edit/' + user.id">Редактировать</router-link>
           </td>
+          <td><button class="btn btn-danger" @click="deleteUser(user)">Удалить</button></td>
         </tr>
       </tbody>
     </table>
@@ -38,6 +38,11 @@ export default {
     users: {
       type: Array,
       required: true
+    }
+  },
+  methods: {
+    deleteUser(user) {
+      this.$emit('delete-user', Object.assign({}, user))
     }
   }
 }

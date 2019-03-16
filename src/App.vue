@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">Fixed navbar</a>
+      <router-link class="navbar-brand" to="/">
+        REST api app
+      </router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -13,11 +15,17 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div id="navbarCollapse" class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <router-link to="/">Home</router-link>
-          </li>
+          <router-link to="/" tag="li" class="nav-item" exact>
+            <a class="nav-link">Главная</a>
+          </router-link>
+          <router-link to="/users" tag="li" class="nav-item">
+            <a class="nav-link">Пользователи</a>
+          </router-link>
+          <router-link to="/create-user" tag="li" class="nav-item">
+            <a class="nav-link">Добавить пользователя</a>
+          </router-link>
         </ul>
       </div>
     </nav>
