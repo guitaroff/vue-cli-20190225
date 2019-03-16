@@ -8,13 +8,12 @@
 </template>
 
 <script>
-import UserForm from '@/components/UserForm.vue'
 import axios from 'axios'
 
 export default {
   name: 'CreateUser',
   components: {
-    UserForm
+    UserForm: () => import('@/components/UserForm.vue')
   },
   data() {
     return {

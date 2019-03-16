@@ -9,13 +9,12 @@
 </template>
 
 <script>
-import UsersList from '@/components/UsersList.vue'
 import axios from 'axios'
 
 export default {
   name: 'Users',
   components: {
-    'users-list': UsersList
+    'users-list': () => import('@/components/UsersList.vue')
   },
   data() {
     return {
