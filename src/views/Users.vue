@@ -21,12 +21,6 @@ export default {
       users: []
     }
   },
-  watch: {
-    users: {
-      deep: true,
-      handler: 'loadUsers'
-    }
-  },
   mounted() {
     this.loadUsers()
   },
