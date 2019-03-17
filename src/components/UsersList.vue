@@ -24,7 +24,11 @@
           <td>
             <router-link :to="'/edit/' + user.id">Редактировать</router-link>
           </td>
-          <td><button class="btn btn-danger" @click="deleteUser(user)">Удалить</button></td>
+          <td>
+            <button type="button" class="btn btn-danger" @click="deleteUser(user.id)">
+              Удалить
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -41,8 +45,8 @@ export default {
     }
   },
   methods: {
-    deleteUser(user) {
-      this.$emit('delete-user', Object.assign({}, user))
+    deleteUser(id) {
+      this.$emit('delete-user', id)
     }
   }
 }

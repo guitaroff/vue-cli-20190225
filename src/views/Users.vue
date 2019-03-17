@@ -33,9 +33,9 @@ export default {
           this.users = users
         })
     },
-    deleteUser(user) {
+    deleteUser(id) {
       axios
-        .delete('/users/' + user.id)
+        .delete('/users/' + id)
         .then(() => {
           this.loadUsers()
           this.$router.push('/users')

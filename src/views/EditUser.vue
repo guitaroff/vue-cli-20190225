@@ -4,7 +4,10 @@
       Загрузка...
     </div>
     <user-form v-else v-model="user"></user-form>
-    <button type="button" class="btn btn-primary" @click="saveUser">
+    <button v-show="user" type="button" class="btn btn-light margin-button" @click="BackToUsers">
+      Отмена
+    </button>
+    <button v-show="user" type="button" class="btn btn-primary margin-button" @click="saveUser">
       Сохранить
     </button>
   </div>
@@ -56,7 +59,16 @@ export default {
       axios.patch(this.url, this.user).then(() => {
         this.$router.push('/users')
       })
+    },
+    BackToUsers() {
+      this.$router.push('/users')
     }
   }
 }
 </script>
+
+<style>
+.margin-button {
+  margin: 10px 10px;
+}
+</style>
