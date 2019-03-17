@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from '@/axios.js'
 
 export default {
   name: 'EditUser',
@@ -28,7 +28,7 @@ export default {
       return this.$route.params.id
     },
     url() {
-      return 'http://localhost:3004/users/' + this.id
+      return '/users/' + this.id
     }
   },
   mounted() {

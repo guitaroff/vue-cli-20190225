@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from '@/axios.js'
 
 export default {
   name: 'Users',
@@ -27,7 +27,7 @@ export default {
   methods: {
     loadUsers() {
       axios
-        .get('http://localhost:3004/users')
+        .get('/users')
         .then(response => response.data)
         .then(users => {
           this.users = users
@@ -35,8 +35,9 @@ export default {
     },
     deleteUser(user) {
       axios
-        .delete('http://localhost:3004/users/' + user.id)
+        .delete('/users/' + user.id)
         .then(() => {
+          this.loadUsers()
           this.$router.push('/users')
         })
         .catch(error => {

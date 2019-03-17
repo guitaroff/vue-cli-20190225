@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from '@/axios.js'
 
 export default {
   name: 'CreateUser',
@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     url() {
-      return 'http://localhost:3004/users'
+      return '/users'
     }
   },
   methods: {
