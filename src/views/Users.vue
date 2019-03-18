@@ -5,7 +5,7 @@
       Загрузка...
     </div>
     <users-list v-else :users="users" @delete-user="deleteUser">
-      <template slot="table-header">
+      <template v-slot:table-header>
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Имя</th>
@@ -17,7 +17,7 @@
           <th scope="col">Удалить</th>
         </tr>
       </template>
-      <template slot="table-row" slot-scope="{ user, deleteUser }">
+      <template v-slot:table-row="{ user, deleteUser }">
         <td>{{ user.id }}</td>
         <td>{{ user.firstName }}</td>
         <td>{{ user.lastName }}</td>
