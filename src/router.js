@@ -26,6 +26,11 @@ export default new Router({
       path: '/create-user',
       name: 'CreateUser',
       component: () => import('@/views/CreateUser.vue')
+    },
+    {
+      path: '/phonebook',
+      name: 'phonebook',
+      component: () => import('@/views/Phonebook.vue')
     }
   ]
 })
