@@ -4,7 +4,36 @@
     <div v-if="!users.length" class="alert alert-warning">
       Загрузка...
     </div>
-    <users-list v-else :users="users" @delete-user="deleteUser"></users-list>
+    <users-list v-else :users="users" @delete-user="deleteUser">
+      <template slot="table-header">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Имя</th>
+          <th scope="col">Фамилия</th>
+          <th scope="col">Возраст</th>
+          <th scope="col">Телефон</th>
+          <th scope="col">Эл.почта</th>
+          <th scope="col">Редактировать</th>
+          <th scope="col">Удалить</th>
+        </tr>
+      </template>
+      <template slot="table-row" slot-scope="{ user, deleteUser }">
+        <td>{{ user.id }}</td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.age }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <router-link :to="'/edit/' + user.id">Редактировать</router-link>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger" @click="deleteUser(user.id)">
+            Удалить
+          </button>
+        </td>
+      </template>
+    </users-list>
   </div>
 </template>
 
