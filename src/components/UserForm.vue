@@ -33,6 +33,19 @@
       />
     </div>
 
+    <div v-if="localUser.birthday" class="form-group">
+      <label for="birthday">День Рождения</label>
+      <input
+        id="birthday"
+        v-model.trim="localUser.birthday"
+        type="hidden"
+        class="form-control"
+        placeholder="День Рождения"
+      />
+
+      <datepicker v-model.trim="localUser.birthday"></datepicker>
+    </div>
+
     <div class="form-group">
       <label for="phone">Телефон</label>
       <input
