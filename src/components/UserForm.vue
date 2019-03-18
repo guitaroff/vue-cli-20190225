@@ -104,13 +104,13 @@
       />
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="Access">Уровень доступа</label>
       <select id="Access" v-model.trim="localUser.accessLevel" class="form-control">
         <option :value="admin">Админ</option>
         <option :value="user">Обычный юзер</option>
       </select>
-    </div>
+    </div> -->
 
     <div class="form-group">
       <label for="company">Наименование компании</label>
@@ -138,15 +138,17 @@
       <textarea id="about" v-model.trim="localUser.about" class="form-control" rows="3"></textarea>
     </div>
 
-    <div class="form-group">
+    <div v-if="localUser.registered" class="form-group">
       <label for="registered">Дата регистрации</label>
       <input
         id="registered"
         v-model.trim="localUser.registered"
-        type="text"
+        type="hidden"
         class="form-control"
         placeholder="Дата регистрации"
       />
+
+      <datepicker v-model.trim="localUser.registered"></datepicker>
     </div>
   </div>
 </template>
@@ -154,6 +156,9 @@
 <script>
 export default {
   name: 'UserForm',
+  components: {
+    datepicker: () => import('@/components/datepicker.vue')
+  },
   model: {
     prop: 'user'
   },
