@@ -26,7 +26,7 @@
       <label for="age">Возраст</label>
       <input
         id="age"
-        v-model.trim="localUser.age"
+        v-model.trim.number="localUser.age"
         type="number"
         class="form-control"
         placeholder="Возраст"
@@ -51,7 +51,7 @@
       <input
         id="phone"
         v-model.trim="localUser.phone"
-        type="text"
+        type="tel"
         class="form-control"
         placeholder="Телефон"
       />
@@ -117,13 +117,14 @@
       />
     </div>
 
-    <!-- <div class="form-group">
+    <div class="form-group">
       <label for="Access">Уровень доступа</label>
       <select id="Access" v-model.trim="localUser.accessLevel" class="form-control">
-        <option :value="admin">Админ</option>
-        <option :value="user">Обычный юзер</option>
+        <option value="admin">Админ</option>
+        <option value="user">Обычный юзер</option>
+        <option value="guest">Гость</option>
       </select>
-    </div> -->
+    </div>
 
     <div class="form-group">
       <label for="company">Наименование компании</label>

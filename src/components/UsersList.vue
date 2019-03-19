@@ -61,7 +61,11 @@ export default {
   name: 'UsersList',
   filters: {
     truncate: function(text, length, suffix) {
-      return text.substring(0, length) + suffix
+      if (text.length > 0) {
+        return text.substring(0, length) + suffix
+      } else {
+        return 'Не заполнено'
+      }
     }
   },
   props: {
@@ -78,7 +82,7 @@ export default {
 }
 </script>
 
-<style type="text/css">
+<style>
 .container {
   margin-left: 10px;
 }
