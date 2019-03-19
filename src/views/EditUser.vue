@@ -4,20 +4,22 @@
       Загрузка...
     </div>
     <user-form v-else v-model="user"></user-form>
-    <button type="button" class="btn btn-primary" @click="saveUser">
+    <button v-show="user" type="button" class="btn btn-light margin-button" @click="BackToUsers">
+      Отмена
+    </button>
+    <button v-show="user" type="button" class="btn btn-primary margin-button" @click="saveUser">
       Сохранить
     </button>
   </div>
 </template>
 
 <script>
-import UserForm from '@/components/UserForm.vue'
-import axios from 'axios'
+import axios from '@/axios.js'
 
 export default {
   name: 'EditUser',
   components: {
-    UserForm
+    UserForm: () => import('@/components/UserForm.vue')
   },
   data() {
     return {
@@ -29,7 +31,7 @@ export default {
       return this.$route.params.id
     },
     url() {
-      return 'http://localhost:3004/users/' + this.id
+      return '/users/' + this.id
     }
   },
   mounted() {
@@ -57,7 +59,16 @@ export default {
       axios.patch(this.url, this.user).then(() => {
         this.$router.push('/users')
       })
+    },
+    BackToUsers() {
+      this.$router.push('/users')
     }
   }
 }
 </script>
+
+<style>
+.margin-button {
+  margin: 10px 10px;
+}
+</style>

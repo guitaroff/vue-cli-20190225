@@ -1,6 +1,9 @@
 <template>
   <div>
     <user-form v-model="user"></user-form>
+    <button type="button" class="btn btn-light margin-button" @click="BackToUsers">
+      Отмена
+    </button>
     <button type="button" class="btn btn-primary" @click="saveUser">
       Сохранить
     </button>
@@ -8,22 +11,27 @@
 </template>
 
 <script>
-import UserForm from '@/components/UserForm.vue'
-import axios from 'axios'
+import axios from '@/axios.js'
 
 export default {
   name: 'CreateUser',
   components: {
-    UserForm
+    UserForm: () => import('@/components/UserForm.vue')
   },
   data() {
     return {
-      user: {}
+      user: {
+        firstName: null,
+        lastName: null,
+        age: null,
+        phone: null,
+        email: null
+      }
     }
   },
   computed: {
     url() {
-      return 'http://localhost:3004/users'
+      return '/users'
     }
   },
   methods: {
@@ -42,7 +50,16 @@ export default {
             console.log('Error message', error.message)
           }
         })
+    },
+    BackToUsers() {
+      this.$router.push('/users')
     }
   }
 }
 </script>
+
+<style>
+.margin-button {
+  margin: 10px 10px;
+}
+</style>

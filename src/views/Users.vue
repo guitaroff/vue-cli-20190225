@@ -4,28 +4,52 @@
     <div v-if="!users.length" class="alert alert-warning">
       Загрузка...
     </div>
-    <users-list v-else :users="users" @delete-user="deleteUser"></users-list>
+    <users-list v-else :users="users" @delete-user="deleteUser">
+      <template v-slot:table-header>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Имя</th>
+          <th scope="col">Фамилия</th>
+          <th scope="col">Возраст</th>
+          <th scope="col">День Рождения</th>
+          <th scope="col">Телефон</th>
+          <th scope="col">Эл.почта</th>
+          <th scope="col">Редактировать</th>
+          <th scope="col">Удалить</th>
+        </tr>
+      </template>
+      <template v-slot:table-row="{ user, deleteUser }">
+        <td>{{ user.id }}</td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.age }}</td>
+        <td>{{ user.birthday }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <router-link :to="'/edit/' + user.id">Редактировать</router-link>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger" @click="deleteUser(user.id)">
+            Удалить
+          </button>
+        </td>
+      </template>
+    </users-list>
   </div>
 </template>
 
 <script>
-import UsersList from '@/components/UsersList.vue'
-import axios from 'axios'
+import axios from '@/axios.js'
 
 export default {
   name: 'Users',
   components: {
-    'users-list': UsersList
+    'users-list': () => import('@/components/UsersList.vue')
   },
   data() {
     return {
       users: []
-    }
-  },
-  watch: {
-    users: {
-      deep: true,
-      handler: 'loadUsers'
     }
   },
   mounted() {
@@ -34,16 +58,17 @@ export default {
   methods: {
     loadUsers() {
       axios
-        .get('http://localhost:3004/users')
+        .get('/users')
         .then(response => response.data)
         .then(users => {
           this.users = users
         })
     },
-    deleteUser(user) {
+    deleteUser(id) {
       axios
-        .delete('http://localhost:3004/users/' + user.id)
+        .delete('/users/' + id)
         .then(() => {
+          this.loadUsers()
           this.$router.push('/users')
         })
         .catch(error => {
