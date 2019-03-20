@@ -58,12 +58,6 @@ export default {
   methods: {
     loadUsers() {
       this.$store.dispatch('loadUsers')
-      // axios
-      //   .get('/users')
-      //   .then(response => response.data)
-      //   .then(users => {
-      //     this.users = users
-      //   })
     },
     deleteUser(id) {
       axios
