@@ -47,9 +47,9 @@ export default {
   components: {
     'users-list': () => import('@/components/UsersList.vue')
   },
-  data() {
-    return {
-      users: []
+  computed: {
+    users() {
+      return this.$store.state.users
     }
   },
   mounted() {
@@ -57,12 +57,13 @@ export default {
   },
   methods: {
     loadUsers() {
-      axios
-        .get('/users')
-        .then(response => response.data)
-        .then(users => {
-          this.users = users
-        })
+      this.$store.dispatch('loadUsers')
+      // axios
+      //   .get('/users')
+      //   .then(response => response.data)
+      //   .then(users => {
+      //     this.users = users
+      //   })
     },
     deleteUser(id) {
       axios

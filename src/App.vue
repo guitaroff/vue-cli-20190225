@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <router-link class="navbar-brand" to="/">
-        REST api app
+        {{ title }}
       </router-link>
       <button
         class="navbar-toggler"
@@ -38,6 +38,17 @@
     </main>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'App',
+  computed: {
+    title() {
+      return this.$store.state.navbarTitle + ' ' + this.$store.getters.titleLength
+    }
+  }
+}
+</script>
 
 <style>
 #app {
