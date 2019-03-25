@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+import axios from '@/axios.js'
 
 Vue.use(Vuex)
 
@@ -21,7 +21,7 @@ const store = new Vuex.Store({
     loadUsers({ commit }) {
       console.log('loadUsers')
       axios
-        .get('http://localhost:3004/users')
+        .get('/users')
         .then(response => response.data)
         .then(users => {
           commit('setUsers', users)
